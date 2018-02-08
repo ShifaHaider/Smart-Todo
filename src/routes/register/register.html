@@ -4,15 +4,31 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAU4bN5Q6Y5Oxk9YcesUsPNfiYHFqrwyiY",
+        authDomain: "smart-todo-76c8f.firebaseapp.com",
+        databaseURL: "https://smart-todo-76c8f.firebaseio.com",
+        projectId: "smart-todo-76c8f",
+        storageBucket: "smart-todo-76c8f.appspot.com",
+        messagingSenderId: "180061643849"
+    };
+    firebase.initializeApp(config);
+</script>
 <link rel="stylesheet" href="style.css">
 <body>
 <h1>Register</h1>
 <div class="div">
-<input type="text" placeholder="Name"><br>
-<input type="text" placeholder="Email"><br>
-<input type="password" placeholder="Password"><br>
-<input type="number" placeholder="Phone Number"><br>
-    <button>Register</button>
+<input type="text" placeholder="Name" id="name"><br>
+<input type="text" placeholder="Username" id="userName"><br>
+<input type="text" placeholder="Email" id="email"><br>
+<input type="password" placeholder="Password" id="password"><br>
+<input type="number" placeholder="Phone Number" id="phone"><br>
+    <button onclick="saveData()">Register</button>
 </div>
 </body>
+<script src="register.js"></script>
 </html>
