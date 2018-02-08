@@ -14,14 +14,12 @@ function saveData() {
     };
 
     var ref = db.collection('users').doc(saveData1.userName);
-
     ref.get().then(function (doc) {
         if (doc.exists) {
             alert('UserName is not available');
         }
         else {
             ref.set(saveData1).then(function (doc) {
-                localStorage.setItem('userName', userName.value);
                 location.assign('../login/login.html');
                 name.value = '';
                 userName.value = '';

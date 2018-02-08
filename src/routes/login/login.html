@@ -4,14 +4,29 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAU4bN5Q6Y5Oxk9YcesUsPNfiYHFqrwyiY",
+        authDomain: "smart-todo-76c8f.firebaseapp.com",
+        databaseURL: "https://smart-todo-76c8f.firebaseio.com",
+        projectId: "smart-todo-76c8f",
+        storageBucket: "smart-todo-76c8f.appspot.com",
+        messagingSenderId: "180061643849"
+    };
+    firebase.initializeApp(config);
+</script>
 <link rel="stylesheet" href="style.css">
 <body>
 <h1>Login</h1>
 <div class="div">
-<input type="text" placeholder="Username"><br>
-<input type="password" placeholder="Password"><br>
-    <button>Login</button>
+<input type="text" placeholder="Username" id="logUser"><br>
+<input type="password" placeholder="Password" id="logPassword"><br>
+    <button onclick="doLogin()">Login</button>
 </div>
 </body>
+<script src="login.js"></script>
 
 </html>
