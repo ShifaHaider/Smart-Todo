@@ -10,6 +10,7 @@ function doLogin() {
                 localStorage.setItem('userName' , logU.value);
                 location.assign('../dashboard/dashboard.html')
             }
+
             else {
                 alert('Wrong Password')
             }
@@ -18,5 +19,7 @@ function doLogin() {
             alert('userName not available')
         }
 
-    })
+    });
+    logU.value = '';
+    logPass.value = '';
 }
