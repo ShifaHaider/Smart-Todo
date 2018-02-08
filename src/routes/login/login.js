@@ -6,11 +6,10 @@ function doLogin() {
     var ref = db.collection('users').doc(logU.value);
     ref.get().then(function (user) {
         if (user.exists) {
-            if (user.data().password === logPass.value) {
+            if (user.data().password == logPass.value) {
                 localStorage.setItem('userName' , logU.value);
                 location.assign('../dashboard/dashboard.html')
             }
-
             else {
                 alert('Wrong Password')
             }
@@ -18,8 +17,5 @@ function doLogin() {
         else {
             alert('userName not available')
         }
-
     });
-    logU.value = '';
-    logPass.value = '';
 }
