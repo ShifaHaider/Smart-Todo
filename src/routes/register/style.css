@@ -1,31 +1,24 @@
+body{
+    background-color: #098b69;
+    text-align: center;
+}
 .div{
+   margin-left: 380px ;
+    background-color: mintcream;
     width: 180px;
-    border: 2px solid #fa386c;
-    border-radius: 3px;
-    padding: 20px 30px 20px 30px;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 20px 40px 20px 40px;
 }
 
 input{
     display: block;
-}
-input#name{
-    border-radius: 3px ;
-    padding: 10px;
-}
-input#userName{
     border-radius: 3px;
     padding: 10px;
+    background: ghostwhite;
 }
-input#email{
-    border-radius: 3px;
-    padding: 10px;
-}
-input#password{
-    border-radius: 3px;
-    padding: 10px;
-}
-input#phone{
-    border-radius: 3px;
-    padding: 10px;
+.b{
+    padding: 5px 60px 5px 60px;
+    background-color: #098b69;
 }
 

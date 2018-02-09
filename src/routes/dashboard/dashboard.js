@@ -30,7 +30,7 @@ ref.get().then(function(user1){
     div.appendChild(p3);
 
     div.style.width = '220px';
-    div.style.border = '2px solid yellow';
+    div.style.border = '2px solid white';
     div.style.padding = '20px';
     div.style.borderRadius = '3px';
     console.log(div);

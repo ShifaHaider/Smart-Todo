@@ -1,17 +1,24 @@
+body{
+    background-color: #0cb28f;
+    text-align: center;
+
+}
 .div{
+    margin-left: 380px ;
+    margin-top: 70px;
+    background-color: mintcream;
     width: 180px;
-    border: 2px solid #fa5831;
-    border-radius: 3px;
-    padding: 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 30px 50px 30px 50px;
 }
 input{
     display: block;
-}
-input#logUser{
     border-radius: 3px;
     padding: 10px;
+    background: ghostwhite;
 }
-input#logPassword{
-    border-radius: 3px;
-    padding: 10px;
+.b{
+    padding: 5px 70px 5px 70px;
+    background-color: #0cb28f;
 }
