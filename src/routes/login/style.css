@@ -1,6 +1,17 @@
 .div{
     width: 180px;
-    border: 1px solid #000;
+    border: 2px solid #fa5831;
     border-radius: 3px;
     padding: 20px;
+}
+input{
+    display: block;
+}
+input#logUser{
+    border-radius: 3px;
+    padding: 10px;
+}
+input#logPassword{
+    border-radius: 3px;
+    padding: 10px;
 }

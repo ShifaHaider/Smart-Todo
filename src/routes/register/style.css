@@ -1,6 +1,31 @@
 .div{
     width: 180px;
-    border: 1px solid #000;
+    border: 2px solid #fa386c;
     border-radius: 3px;
-    padding: 20px;
+    padding: 20px 30px 20px 30px;
 }
+
+input{
+    display: block;
+}
+input#name{
+    border-radius: 3px ;
+    padding: 10px;
+}
+input#userName{
+    border-radius: 3px;
+    padding: 10px;
+}
+input#email{
+    border-radius: 3px;
+    padding: 10px;
+}
+input#password{
+    border-radius: 3px;
+    padding: 10px;
+}
+input#phone{
+    border-radius: 3px;
+    padding: 10px;
+}
+

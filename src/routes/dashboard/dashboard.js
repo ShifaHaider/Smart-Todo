@@ -42,5 +42,6 @@ function add(){
     var inp = document.getElementById('inp');
     console.log(inp.value);
     inp.value = '';
+
 }
 console.log(db);
