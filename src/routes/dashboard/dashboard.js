@@ -2,6 +2,7 @@ var db = firebase.firestore();
 var user =localStorage.getItem('userName');
 var div = document.getElementById('div');
 var  ref = db.collection('users').doc(user);
+var todoRef =ref.collection('todos');
 ref.get().then(function(user1){
     user =  user1.data();
     var p = document.createElement('p');
@@ -40,6 +41,10 @@ ref.get().then(function(user1){
 
 function add(){
     var inp = document.getElementById('inp');
+    todoRef.add({
+        todo: inp.value,
+        time:Date.now()
+    });
     console.log(inp.value);
     inp.value = '';
 
