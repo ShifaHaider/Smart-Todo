@@ -38,7 +38,7 @@ ref.get().then(function (user1) {
     console.log(div);
 
 });
-
+var editNewTodo;
 var todoForEdit;
 
 function add() {
@@ -66,18 +66,18 @@ function loadTodos() {
                 secButton.addEventListener('click', function(){
                     document.getElementById('inp').value = data.todo;
                     todoForEdit = data;
+                    editNewTodo = li;
+                    console.log(editNewTodo);
                 });
                 button.innerHTML = 'Delete';
                 secButton.innerHTML = 'Edit';
-                var text = document.createTextNode(data.todo + ' ' + new Date(data.time).toLocaleString());
+                var b = document.createElement('b');
+                b.innerHTML = data.todo + ' ' + new Date(data.time).toLocaleString();
                 var li = document.createElement('li');
-                li.appendChild(text);
+                li.appendChild(b);
                 li.appendChild(button);
                 li.appendChild(secButton);
                 list.appendChild(li);
-            }
-            else if(docTodo.type == 'modified'){
-
             }
         })
     })
@@ -87,11 +87,13 @@ function deleteTodo(e) {
     todoRef.doc(e.getAttribute('id')).delete()
 }
 function doEdit() {
-    console.log(todoForEdit);
     var inp = document.getElementById('inp');
-    todoRef.doc(todoForEdit.id).update({
+    var obj = {
         todo : inp.value,
         time : Date.now()
-    })
+    };
+    editNewTodo.firstChild.innerHTML = obj.todo + new Date(obj.time).toLocaleString();
+
+    todoRef.doc(todoForEdit.id).update(obj)
 }
 console.log(db);
