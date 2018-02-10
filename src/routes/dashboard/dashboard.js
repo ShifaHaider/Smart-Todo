@@ -1,6 +1,7 @@
 var db = firebase.firestore();
 var user =localStorage.getItem('userName');
 var div = document.getElementById('div');
+var list = document.getElementById('list');
 var  ref = db.collection('users').doc(user);
 var todoRef =ref.collection('todos');
 ref.get().then(function(user1){
@@ -39,15 +40,12 @@ ref.get().then(function(user1){
 });
 
 function add(){
-    var list = document.getElementById('list');
     var inp = document.getElementById('inp');
     todoRef.add({
         todo: inp.value,
         time:Date.now()
     });
-    var li = document.createElement('li');
-    li.innerHTML = inp.value;
-    list.appendChild(li);
+
     console.log(inp.value);
     inp.value = '';
 }
@@ -56,8 +54,11 @@ function loadTodos(){
     todoRef.onSnapshot(function(todoCollection){
         console.log(todoCollection);
         todoCollection.docChanges.forEach(function(docTodo){
-            console.log(docTodo.doc.data());
-
+            var data = docTodo.doc.data();
+            console.log(data);
+            var li = document.createElement('li');
+            li.innerHTML = data.todo;
+            list.appendChild(li);
 
         })
     })
