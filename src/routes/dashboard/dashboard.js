@@ -1,29 +1,29 @@
 var db = firebase.firestore();
-var user =localStorage.getItem('userName');
+var user = localStorage.getItem('userName');
 var div = document.getElementById('div');
 var list = document.getElementById('list');
-var  ref = db.collection('users').doc(user);
-var todoRef =ref.collection('todos');
-ref.get().then(function(user1){
-    user =  user1.data();
+var ref = db.collection('users').doc(user);
+var todoRef = ref.collection('todos');
+ref.get().then(function (user1) {
+    user = user1.data();
     var p = document.createElement('p');
     var p1 = document.createElement('p');
     var p2 = document.createElement('p');
     var p3 = document.createElement('p');
-    var  h2 = document.createElement('h2');
+    var h2 = document.createElement('h2');
     var i = document.createElement('i');
-    p.innerHTML ='Name : ' + user.name;
-    p.style.color =  '#1f30ff ';
-    p1.innerHTML ='UserName : '+ user.userName;
+    p.innerHTML = 'Name : ' + user.name;
+    p.style.color = '#1f30ff ';
+    p1.innerHTML = 'UserName : ' + user.userName;
     p1.style.color = 'red';
-    p2.innerHTML ='Email : ' + user.email;
+    p2.innerHTML = 'Email : ' + user.email;
     p2.style.color = 'purple';
-    p3.innerHTML ='PhoneNumber : ' + user.phoneNumber;
+    p3.innerHTML = 'PhoneNumber : ' + user.phoneNumber;
     p3.style.color = 'green';
     i.innerHTML = 'Welcome ' + user.userName + '!';
     h2.appendChild(i);
     h2.style.color = '#ff335f';
- h2.style.textshadow = '2px #ff335f';
+    h2.style.textshadow = '2px #ff335f';
     h2.style.listStyleImage = 'a.jpg';
     div.appendChild(h2);
     div.appendChild(p);
@@ -39,28 +39,46 @@ ref.get().then(function(user1){
 
 });
 
-function add(){
+function add() {
     var inp = document.getElementById('inp');
     todoRef.add({
         todo: inp.value,
-        time:Date.now()
+        time: Date.now()
     });
 
     console.log(inp.value);
     inp.value = '';
 }
 loadTodos();
-function loadTodos(){
-    todoRef.onSnapshot(function(todoCollection){
+function loadTodos() {
+    todoRef.onSnapshot(function (todoCollection) {
         console.log(todoCollection);
-        todoCollection.docChanges.forEach(function(docTodo){
+        todoCollection.docChanges.forEach(function (docTodo) {
             var data = docTodo.doc.data();
-            console.log(data);
-            var li = document.createElement('li');
-            li.innerHTML = data.todo;
-            list.appendChild(li);
-
+            data.id = docTodo.doc.id;
+            console.log(docTodo);
+            if (docTodo.type == 'added') {
+                var button = document.createElement('button');
+                button.setAttribute('onclick', 'deleteTodo(this)');
+                button.setAttribute('id', data.id);
+                button.innerHTML = 'Delete';
+                var text = document.createTextNode(data.todo + ' ' + new Date(data.time).toLocaleString());
+                var li = document.createElement('li');
+                li.appendChild(text);
+                li.appendChild(button);
+                list.appendChild(li);
+            }
+            else if(docTodo.type == 'removed'){
+                
+            }
         })
     })
+}
+function deleteTodo(e) {
+    list.removeChild(e.parentNode);
+    todoRef.doc(e.getAttribute('id')).delete()
+}
+function editTodo() {
+
 }
 console.log(db);
