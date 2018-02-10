@@ -38,15 +38,28 @@ ref.get().then(function(user1){
 
 });
 
-
 function add(){
+    var list = document.getElementById('list');
     var inp = document.getElementById('inp');
     todoRef.add({
         todo: inp.value,
         time:Date.now()
     });
+    var li = document.createElement('li');
+    li.innerHTML = inp.value;
+    list.appendChild(li);
     console.log(inp.value);
     inp.value = '';
+}
+loadTodos();
+function loadTodos(){
+    todoRef.onSnapshot(function(todoCollection){
+        console.log(todoCollection);
+        todoCollection.docChanges.forEach(function(docTodo){
+            console.log(docTodo.doc.data());
 
+
+        })
+    })
 }
 console.log(db);
