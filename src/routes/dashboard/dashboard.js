@@ -39,6 +39,8 @@ ref.get().then(function (user1) {
 
 });
 
+var todoForEdit;
+
 function add() {
     var inp = document.getElementById('inp');
     todoRef.add({
@@ -59,17 +61,23 @@ function loadTodos() {
             console.log(docTodo);
             if (docTodo.type == 'added') {
                 var button = document.createElement('button');
+                var secButton = document.createElement('button');
                 button.setAttribute('onclick', 'deleteTodo(this)');
-                button.setAttribute('id', data.id);
+                secButton.addEventListener('click', function(){
+                    document.getElementById('inp').value = data.todo;
+                    todoForEdit = data;
+                });
                 button.innerHTML = 'Delete';
+                secButton.innerHTML = 'Edit';
                 var text = document.createTextNode(data.todo + ' ' + new Date(data.time).toLocaleString());
                 var li = document.createElement('li');
                 li.appendChild(text);
                 li.appendChild(button);
+                li.appendChild(secButton);
                 list.appendChild(li);
             }
-            else if(docTodo.type == 'removed'){
-                
+            else if(docTodo.type == 'modified'){
+
             }
         })
     })
@@ -78,7 +86,12 @@ function deleteTodo(e) {
     list.removeChild(e.parentNode);
     todoRef.doc(e.getAttribute('id')).delete()
 }
-function editTodo() {
-
+function doEdit() {
+    console.log(todoForEdit);
+    var inp = document.getElementById('inp');
+    todoRef.doc(todoForEdit.id).update({
+        todo : inp.value,
+        time : Date.now()
+    })
 }
 console.log(db);
