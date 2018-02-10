@@ -4,8 +4,9 @@ body{
 
 }
 .div{
-    margin-left: 380px ;
-    margin-top: 70px;
+    /*margin-left: 380px ;*/
+    /*margin-top: 70px;*/
+    margin: 70px 380px 70px 380px;
     background-color: mintcream;
     width: 180px;
     border: 2px solid white;
